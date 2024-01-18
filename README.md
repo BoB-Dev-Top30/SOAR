@@ -1,6 +1,6 @@
 # SOAR
 
-
+> pip install python-magic-bin
 
 ## 1 환경구축
 https://github.com/pidydx/libmagicwin64
