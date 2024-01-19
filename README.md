@@ -17,3 +17,7 @@ https://github.com/pidydx/libmagicwin64
 ### 애먹었던점
 CoretexAPI가 아니라 그냥 API로 바꿔야함
 참조 링크 : https://github.com/TheHive-Project/Cortex4py/blob/master/Usage.md
+
+# 1) 구성도
+![Playbook(피싱 이메일 상황) (2)](https://github.com/S-SIRIUS/SOAR/assets/109223193/7240985e-dec5-4319-a578-72190e5913e6)
+
