@@ -1,5 +1,6 @@
 # SOAR
 
+> pip install openai==0.28.0
 > pip install python-magic-bin
 
 ## 1 환경구축
