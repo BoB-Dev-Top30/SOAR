@@ -1,7 +1,6 @@
 from thehive4py.api import TheHiveApi
-from cortex4py.api import Api
 from thehive4py.models import Case, CaseObservable
-from cortex4py.query import *
+from config.config import *
 
 import datetime
 import base64
@@ -9,19 +8,12 @@ import os
 
 # TheHive와 Cortex 설정
 hive_url = 'http://127.0.0.1:9000'
-hive_api_key = 'O+hgLkPUCzoDCFB+8TJQ7YGnjzbCLNnZ'
-cortex_url = 'http://127.0.0.1:9001'
-cortex_api_key = 'FrfLo5S0DZT7p1VR0vvoJ0gK8z60tfJv'
+hive_api_key = hive_api_key
 
 # TheHive API 연결
 hive_api = TheHiveApi(hive_url, hive_api_key)
 
-# Cortex API 연결
-cortex_api = Api(cortex_url, cortex_api_key)
-
-
-
- # TheHive에 case 생성
+# TheHive에 case 생성
 def Create_Case(email_alert_data, file_path):
     # 사례 생성
     case = Case(
@@ -36,11 +28,25 @@ def Create_Case(email_alert_data, file_path):
     )
     response = hive_api.create_case(case)
 
-    # 사례 생성 확인 및 관측치 추가
+
     if response.status_code == 201:
         case_id = response.json()['id']
-        result = f"Case created in The Hive with ID: {case_id}"
+        print(f"Case created in The Hive with ID: {case_id}")
 
+        # observable 추가
+        file_observable = CaseObservable(
+            dataType='file',
+            data=file_path,  # 파일 경로를 직접 전달합니다.
+            message='Attached file',
+            tlp=3,
+            ioc=False,
+            tags=['attachment']
+            # _parent=case_id  # 이 부분은 실제 사례 ID에 따라 설정합니다.
+        )
+        return case, case_id
+
+
+        '''
         # 파일을 바이너리로 읽어서 base64 인코딩
         with open(file_path, 'rb') as file:
             file_content = base64.b64encode(file.read()).decode()
@@ -63,8 +69,8 @@ def Create_Case(email_alert_data, file_path):
             result += f"\nError adding file observable: {file_path}"
         else:
             result += "\nFile observable added successfully"
+            '''
 
     else:
         result = "Error creating case"
-
-    return result
+        return result
