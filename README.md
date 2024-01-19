@@ -19,75 +19,91 @@ CoretexAPI가 아니라 그냥 API로 바꿔야함
 참조 링크 : https://github.com/TheHive-Project/Cortex4py/blob/master/Usage.md
 
 # 구성도
-![Playbook(피싱 이메일 상황) (2)](https://github.com/S-SIRIUS/SOAR/assets/109223193/7240985e-dec5-4319-a578-72190e5913e6)
+![Playbook(피싱 이메일 상황) (2)](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/52ead01e-f581-44ff-b81b-925c22de8819)
+
 
 # Playbook 흐름 (Cortex는 위협이라고 판단하지 못했지만, AI모델이 위협이라고 판단한 상황)
 ### 보안시스템으로 부터 전달받은 데이터
-![스크린샷 2024-01-19 231052](https://github.com/S-SIRIUS/SOAR/assets/109223193/72527180-ca44-4a52-80da-2a7bcf526fc2)
+![스크린샷 2024-01-19 231052](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/f437c2e3-fc54-41e6-b241-4afbc0b1e821)
+
+
 
 ## 1) Alert생성
 Hive 패키지의 Alert_Phishing 모듈이 동작
+![스크린샷 2024-01-19 232554](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/ec2dc91f-1be5-4856-abc4-d087f6936493)
 
-![스크린샷 2024-01-19 232554](https://github.com/S-SIRIUS/SOAR/assets/109223193/0294f598-98f3-40e9-bd1e-4e264c9fca8d)
+![스크린샷 2024-01-19 233406](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/9dd71b90-8783-4f7b-86cc-14c045887c59)
 
-![스크린샷 2024-01-19 233406](https://github.com/S-SIRIUS/SOAR/assets/109223193/47ca97b2-05a7-4514-9437-9fb10afe97d3)
+
 
 
 ## 2) Case생성
 Hive패키지의 Create_Case 모듈이 동작
 
-![스크린샷 2024-01-19 231224](https://github.com/S-SIRIUS/SOAR/assets/109223193/2ec5a8ae-69d5-43ab-8cb8-9ec6913cad11)
+![case코드](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/9f651d33-9c99-4c49-9539-537e3b0fe294)
 
-![스크린샷 2024-01-19 233253](https://github.com/S-SIRIUS/SOAR/assets/109223193/ecf788d0-254c-4ceb-9ae3-4d6441a7b05e)
+![스크린샷 2024-01-19 233253](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/ddc4c879-b2ac-4f08-a68d-835e39f554af)
 
-![스크린샷 2024-01-19 233336](https://github.com/S-SIRIUS/SOAR/assets/109223193/50504156-ad80-4e1d-999f-35d218e07837)
+![스크린샷 2024-01-19 233336](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/35b7b802-6143-4f5b-92aa-6240208e47b6)
+
 
 
 
 ## 3) 기존 Block-List와 비교(추후 DB로 구현)
-![스크린샷 2024-01-19 231327](https://github.com/S-SIRIUS/SOAR/assets/109223193/4dc6fdc2-2f8a-410e-aefa-3227739ea456)
+![스크린샷 2024-01-19 231327](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/30b4af24-2ce2-4b50-87aa-d5ad80c6ec25)
+
 
 
 ## 4) 위협수준 분류
 > 위협수준 분류에는 Analysis패키지가 관여 그중에서도 Analysis_Frame이 메인 core 모듈이 됨.
 
 ### 1> Cortex(Url_scan_io 분석기 사용) 추후 더 많은 분석기를 통해 정확도 향상
-![스크린샷 2024-01-19 231500](https://github.com/S-SIRIUS/SOAR/assets/109223193/ea7f9e47-4758-4b56-ad61-b0879e1a09fe)
+![스크린샷 2024-01-19 231500](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/0d525c07-603a-46e6-9771-19d23a570c56)
+
+
 report가 생성되기 까지 while문을 통해 기다리다가 report를 받으면 여기서 total필드에서 악성여부 판별
 
 ### 2> BERT
 전 프로젝트에서 같이 개발한 BERT 모델 사용 (가짜뉴스 및 사기데이터로 Fine-Tuning 된 모델)
-![스크린샷 2024-01-19 231736](https://github.com/S-SIRIUS/SOAR/assets/109223193/4bf67537-ff07-43b6-bd25-c7ac5b2694bf)
+![스크린샷 2024-01-19 231736](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/053c4855-282d-48ae-819e-e349f1bd9efe)
 
 
 ## 5) 메일전송
-![스크린샷 2024-01-19 231836](https://github.com/S-SIRIUS/SOAR/assets/109223193/19e14d42-c633-4463-903f-ed181b8b9fe3)
+![스크린샷 2024-01-19 231836](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/2b2c7f72-e9f0-46b7-a260-f41527e1bb00)
 
-![KakaoTalk_20240119_233454958](https://github.com/S-SIRIUS/SOAR/assets/109223193/dfeba35f-0765-4b60-b6a4-45da82baecf2)
+![KakaoTalk_20240119_233454958](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/f0562401-e65e-45e2-86da-a8f98695eae6)
+
+
 
 
 ## 6) Task 생성(Playbook의 흐름대로 HIVE에 Task2 생성)
-![스크린샷 2024-01-19 231911](https://github.com/S-SIRIUS/SOAR/assets/109223193/a5afe4c3-1af0-4d7c-a0b9-e44bdae4acba)
+![스크린샷 2024-01-19 231911](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/d489d35b-b5b1-4801-be31-854d58df461f)
 
-![스크린샷 2024-01-19 233730](https://github.com/S-SIRIUS/SOAR/assets/109223193/6736d85c-3c6b-42bb-bc59-ea069075aa02)
+
+![스크린샷 2024-01-19 233730](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/87427aa4-daff-411c-825f-24d063377f63)
+
 
 
 ## 7) 정탐 vs 오탐 여부 전달
 분석가가 정탐 인지 오탐인지 여부 전달
 
-![스크린샷 2024-01-19 233802](https://github.com/S-SIRIUS/SOAR/assets/109223193/3bc64d61-cd7b-4e92-8964-85ddd45b86c7)
+![스크린샷 2024-01-19 233802](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/24f5d88b-fb0b-4dea-9d8f-2e1a65d354ac)
+
 
 
 
 ## 8) 분석정보 LLM에 전달 및 Description 작성
 ### 1> 생성
-![스크린샷 2024-01-19 232021](https://github.com/S-SIRIUS/SOAR/assets/109223193/d3f910c3-e64d-4c75-b308-948b31dcdb0d)
+![스크린샷 2024-01-19 232021](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/811e76c3-e185-4341-8822-a7a88dc17a13)
+
 
 ### 2> 프롬프트 템플릿
-![스크린샷 2024-01-19 232035](https://github.com/S-SIRIUS/SOAR/assets/109223193/1deb8119-62b7-4504-8bd6-273fa59a7fc2)
+![스크린샷 2024-01-19 232035](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/d99a28e7-2235-4124-88aa-e20f4985599e)
+
 
 ### 3> Description 자동 업데이트
-![스크린샷 2024-01-19 233858](https://github.com/S-SIRIUS/SOAR/assets/109223193/d141ae0c-8f43-4617-afe3-04fe4ac1890c)
+![스크린샷 2024-01-19 233858](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/cde5a988-0e24-4f54-ad6d-ef906f41e2ee)
+
 
 
 ## 9) 케이스 종료
