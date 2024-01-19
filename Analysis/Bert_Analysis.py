@@ -8,7 +8,6 @@ from torch.utils.data import Dataset, DataLoader
 import joblib
 
 
-
 #모델 가져오기 분류헤드가 아직 훈련되지 않았으니 오류는 정상
 def Bert_Analysis(text):    
     num_label = 2
