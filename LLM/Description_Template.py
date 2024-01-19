@@ -20,5 +20,5 @@ def Description_Template(Threat_Info, Bert_Report, Cortex_Report, Human_Report):
     [주의사항]
     관련 정보가 없는 부분은 생략하고 작성해줘!
     '''
-
+    print(template)
     return template

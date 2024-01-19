@@ -5,7 +5,7 @@ from .Description_Template import Description_Template
 
 api_key = os.getenv("OPENAI_API_KEY")
 
-def Create_Description(Threat_Info=None, Bert_Report=None, Cortex_Report=None, Human_Report=None):
+def Create_Description(Threat_Info, Bert_Report, Cortex_Report, Human_Report):
     gpt_prompt = Description_Template(Threat_Info, Bert_Report, Cortex_Report, Human_Report)
     message = [{"role": "user", "content": gpt_prompt}]
     response = openai.ChatCompletion.create(

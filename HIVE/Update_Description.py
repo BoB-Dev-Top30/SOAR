@@ -16,8 +16,15 @@ hive_api_key = hive_api_key
 # TheHive API 연결
 hive_api = TheHiveApi(hive_url, hive_api_key)
 
-def Update_Description(case_id, email_alert_data, Data_Info, Human_Report):
-    report = Create_Description(Data_Info, Human_Report)
+def Update_Description(case_id, Threat_Info=None, Bert_Report=None, Cortex_Report=None, Human_Report=None):
+
+    Threat_Info = Threat_Info
+    Bert_Report = Bert_Report
+    Cortex_Report = Cortex_Report
+    Human_Report = Human_Report
+
+    report = Create_Description(Threat_Info, Bert_Report, Cortex_Report, Human_Report)
+
     '''
     case = Case(
         title='[Phishing Detection] ' + email_alert_data['subject'],
@@ -30,7 +37,8 @@ def Update_Description(case_id, email_alert_data, Data_Info, Human_Report):
         # tasks=[{'title': 'Initial Analysis'}] # 태스트는 나중에 생성
     )
     '''
-    print("전달되 id",case_id)
+
+    print("전달된 id",case_id)
     case=hive_api.get_case(case_id)
     case.description = report
     case.id = case_id

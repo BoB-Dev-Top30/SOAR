@@ -1,5 +1,6 @@
 import os
-hive_api_key = 'your_api'
-cortex_api_key = 'your_api'
-OPENAI_API_KEY = 'your_api'
+hive_api_key = ''
+cortex_api_key = ''
+OPENAI_API_KEY = ''
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+google_pwd = ""

@@ -53,7 +53,6 @@ def Create_Task2(case_id):
     task = CaseTask(
         title=task_title,
         description=task_description,
-        startDate=int(time.time()) * 1000
     )
     
     # 태스크를 사례에 추가
@@ -80,11 +79,10 @@ def Create_Task3(case_id):
     task = CaseTask(
         title=task_title,
         description=task_description,
-        _parent=case_id
     )
     
     # 태스크를 사례에 추가
-    response = hive_api.create_case_task(task)
+    response = hive_api.create_case_task(case_id, task)
 
     if response.status_code == 201:
         task_id = response.json()['id']
