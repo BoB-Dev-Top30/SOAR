@@ -100,8 +100,12 @@ report가 생성되기 까지 while문을 통해 기다리다가 report를 받�
 ### 2> 프롬프트 템플릿
 ![스크린샷 2024-01-19 232035](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/d99a28e7-2235-4124-88aa-e20f4985599e)
 
+### 3> Update 모듈
+Hive 패키지의 Update_Description 모듈
+![스크린샷 2024-01-20 001540](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/49dcf8c9-df42-4808-a8da-5de29c08a356)
 
-### 3> Description 자동 업데이트
+
+### 4> Description 자동 업데이트
 ![스크린샷 2024-01-19 233858](https://github.com/BoB-Dev-Top30/SOAR/assets/109223193/cde5a988-0e24-4f54-ad6d-ef906f41e2ee)
 
 
