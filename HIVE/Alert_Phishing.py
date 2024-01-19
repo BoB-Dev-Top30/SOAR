@@ -1,21 +1,14 @@
 from thehive4py.api import TheHiveApi
-from cortex4py.api import Api
 from thehive4py.models import Alert, AlertArtifact
-from cortex4py.query import *
-
 import datetime
+from config.config import *
 
 # TheHive와 Cortex 설정
 hive_url = 'http://127.0.0.1:9000'
-hive_api_key = 'O+hgLkPUCzoDCFB+8TJQ7YGnjzbCLNnZ'
-cortex_url = 'http://127.0.0.1:9001'
-cortex_api_key = 'FrfLo5S0DZT7p1VR0vvoJ0gK8z60tfJv'
+hive_api_key = hive_api_key
 
 # TheHive API 연결
 hive_api = TheHiveApi(hive_url, hive_api_key)
-
-# Cortex API 연결
-cortex_api = Api(cortex_url, cortex_api_key)
 
 
  # TheHive에 경고 생성
@@ -52,6 +45,6 @@ def Alert_Phishing(email_alert_data):
     else:
         result = "Error creating alert"
 
-    return result
+    return result, artifacts
 
 
