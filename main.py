@@ -106,7 +106,7 @@ def SOAR(data):
             
             # Cortex 혼자 찾았다면
             if(Analysis_Result=="Cortex Found"):
-                # 1 IP차단 간지나게 띄우는 척 하는거 띄움
+                # 1 IP차단  띄움
                 print("IP를 차단합니다.")            
                 
                 # 2 리스트에 해당값 INSERT -> 추후 DB로 수정
@@ -142,7 +142,6 @@ def SOAR(data):
             elif(Analysis_Result=="Bert Found"):   
                 print("분석가들의 도움이 필요합니다.")
 
-                print(google_pwd)
                 # 1> 분석가들에게 메일 보냄
                 for charger in charger_mail_list:
                     Send_Email('sirius5b8b@gmail.com', google_pwd, charger, 'Need Analyst!', f'분석이 필요합니다. case{case_id}를 확인해주시고 Task를 수행하세요!\n')
@@ -192,4 +191,6 @@ def SOAR(data):
                 print("case가 종료되었습니다.")
 
 # SOAR(data) # task1
+                
+# 예제 데이터는 Cortex는 위협이라고 감지하지 않았지만, AI모델이 위협이라고 판단한 상황!
 SOAR(data2) # task2
