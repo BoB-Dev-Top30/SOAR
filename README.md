@@ -1,8 +1,12 @@
 # SOAR
+> pip install thehive4py==1.8.1
+
+> pip install cortex4py==2.1.0
 
 > pip install openai==0.28.0
 
 > pip install python-magic-bin
+requirements.txt를 참고해주세요.
 
 ## 1 환경구축
 https://github.com/pidydx/libmagicwin64
