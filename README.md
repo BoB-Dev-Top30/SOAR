@@ -56,7 +56,7 @@ Hive패키지의 Create_Case 모듈이 동작
 report가 생성되기 까지 while문을 통해 기다리다가 report를 받으면 여기서 total필드에서 악성여부 판별
 
 ### 2> BERT
-전의 프로젝트에서 같이 개발한 BERT 모델 사용 (가짜뉴스 및 사기데이터로 Fine-Tuning 된 모델)
+전 프로젝트에서 같이 개발한 BERT 모델 사용 (가짜뉴스 및 사기데이터로 Fine-Tuning 된 모델)
 ![스크린샷 2024-01-19 231736](https://github.com/S-SIRIUS/SOAR/assets/109223193/4bf67537-ff07-43b6-bd25-c7ac5b2694bf)
 
 
