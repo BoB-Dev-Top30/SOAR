@@ -1,4 +1,4 @@
 *.bin
 .venv
 __pycache__
-*.config
+/config/config.py
